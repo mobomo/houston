@@ -1,0 +1,388 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 61, ../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
+* html {
+  font-size: 100%; }
+
+/* line 64, ../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
+html {
+  font-size: 16px;
+  line-height: 0.5em; }
+
+/* line 14, sass/screen.scss */
+html {
+  line-height: 2em; }
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+/* line 26, sass/screen.scss */
+html, body {
+  height: 100%; }
+
+/* line 30, sass/screen.scss */
+body {
+  background: #17162E;
+  /* Old browsers */
+  color: #A6A5CA;
+  font-family: "jaf-facitweb", Arial, Helvetica, sans-serif;
+  font-weight: 200; }
+
+/* line 37, sass/screen.scss */
+section {
+  padding: 0 2em;
+  text-align: center; }
+  /* line 41, sass/screen.scss */
+  section img {
+    width: 70%;
+    height: auto; }
+  /* line 46, sass/screen.scss */
+  section > h2 {
+    color: #5a5997;
+    margin: 1em 0 0; }
+    /* line 50, sass/screen.scss */
+    section > h2 em {
+      color: #A6A5CA; }
+  /* line 55, sass/screen.scss */
+  section > p {
+    font-size: 0.9375em;
+    line-height: 1.6em;
+    margin-bottom: 1.5em; }
+
+/* line 61, sass/screen.scss */
+aside {
+  background: rgba(15, 14, 28, 0.8);
+  border-top: 1px solid rgba(78, 76, 117, 0.5);
+  box-shadow: inset 1px 0px 10px rgba(4, 4, 8, 0.5);
+  padding: 2em; }
+  /* line 67, sass/screen.scss */
+  aside ul, aside ol {
+    padding-left: 0; }
+    /* line 70, sass/screen.scss */
+    aside ul li, aside ol li {
+      font-size: 0.875em;
+      line-height: 1.71429em;
+      margin-bottom: 1em; }
+
+/* line 77, sass/screen.scss */
+h1, h2, h3, h4, h5, h6 {
+  color: #fafafa;
+  font-family: "ff-tisa-web-pro", Georgia, "Times New Roman", Serif;
+  font-weight: 100;
+  text-shadow: 0px 1px 0px #020407; }
+  /* line 84, sass/screen.scss */
+  h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+    color: #adadad;
+    font-weight: 100; }
+
+/* line 90, sass/screen.scss */
+h5 {
+  font-weight: 100;
+  font-size: 80%;
+  text-transform: uppercase; }
+
+/* line 96, sass/screen.scss */
+blockquote {
+  font-size: 1.125em;
+  line-height: 1.33333em;
+  color: #d8d7ec;
+  margin: 2em 0;
+  text-align: center;
+  line-height: 2em; }
+
+/* line 104, sass/screen.scss */
+p {
+  text-shadow: 0px 1px 0px #020407; }
+
+/* line 108, sass/screen.scss */
+a {
+  color: #E45758;
+  text-decoration: none; }
+  /* line 112, sass/screen.scss */
+  a:hover {
+    color: #f2afaf; }
+
+/* line 117, sass/screen.scss */
+pre {
+  background: rgba(5, 5, 9, 0.49);
+  margin: 1em 0;
+  text-align: left;
+  border-radius: 4px;
+  padding: 2em 1em;
+  font-size: 0.875em;
+  line-height: 1.71429em;
+  color: #00CEA5; }
+
+/* line 127, sass/screen.scss */
+.extrabig {
+  color: #01000F;
+  font-family: "jaf-facitweb";
+  font-weight: 200;
+  font-size: 3.25em;
+  line-height: 1.07692em;
+  letter-spacing: .1em;
+  margin: 0;
+  text-shadow: 0px 1px 30px rgba(114, 109, 211, 0.37), 0px 1px 0px rgba(188, 186, 255, 0.25); }
+
+/* line 137, sass/screen.scss */
+.extrasmall {
+  font-size: 0.8125em;
+  line-height: 1.84615em; }
+  /* line 140, sass/screen.scss */
+  .extrasmall a {
+    color: #535171; }
+    /* line 143, sass/screen.scss */
+    .extrasmall a:hover {
+      color: #7f7daa; }
+  /* line 148, sass/screen.scss */
+  .extrasmall img {
+    position: relative;
+    left: 4px;
+    bottom: 3px;
+    height: 18px !important;
+    opacity: 0.7;
+    width: 1.1em;
+    height: 100%; }
+
+/* line 159, sass/screen.scss */
+.lead {
+  font-size: 1.125em;
+  line-height: 1.33333em;
+  line-height: 2em; }
+  /* line 163, sass/screen.scss */
+  .lead em {
+    color: #514f87; }
+
+/* line 169, sass/screen.scss */
+.links {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 3.5em 0; }
+  /* line 174, sass/screen.scss */
+  .links li {
+    width: 50%;
+    float: left;
+    display: block; }
+    /* line 179, sass/screen.scss */
+    .links li:nth-child(3) {
+      display: none; }
+    /* line 183, sass/screen.scss */
+    .links li a {
+      font-size: 0.875em;
+      line-height: 1.71429em;
+      border: 1px solid #4E4C75;
+      border-radius: 3px;
+      display: block;
+      margin: 0 5px;
+      text-align: center;
+      padding: .5em 0;
+      text-decoration: none;
+      color: #A6A5CA; }
+      /* line 194, sass/screen.scss */
+      .links li a:hover, .links li a.active {
+        border: 1px solid #E45758;
+        background: #E45758;
+        color: #01000F; }
+  /* line 201, sass/screen.scss */
+  .links li:first-child a {
+    margin-left: 0; }
+  /* line 204, sass/screen.scss */
+  .links li:last-child {
+    margin-right: 0;
+    padding-right: 0; }
+
+/* line 210, sass/screen.scss */
+hr {
+  border-top: 1px solid rgba(127, 125, 185, 0.18);
+  clear: both; }
+
+/* line 215, sass/screen.scss */
+.text-center {
+  text-align: center; }
+
+/* line 219, sass/screen.scss */
+.ss-icon {
+  position: relative;
+  bottom: -2px;
+  left: 3px; }
+
+/* line 225, sass/screen.scss */
+.powerImg {
+  float: left;
+  margin-bottom: 2em;
+  width: 100%; }
+  /* line 230, sass/screen.scss */
+  .powerImg a {
+    display: block;
+    float: left;
+    width: 100%; }
+    /* line 235, sass/screen.scss */
+    .powerImg a svg {
+      float: left;
+      margin-right: 8%;
+      width: 10%;
+      height: 100%;
+      fill: #A6A5CA; }
+    /* line 243, sass/screen.scss */
+    .powerImg a span {
+      float: left;
+      width: 80%; }
+    /* line 248, sass/screen.scss */
+    .powerImg a > span {
+      font-size: 1.0625em;
+      line-height: 1.41176em;
+      margin-bottom: .5em; }
+    /* line 253, sass/screen.scss */
+    .powerImg a > span + span {
+      font-size: 0.8125em;
+      line-height: 1.84615em;
+      color: #A6A5CA; }
+    /* line 258, sass/screen.scss */
+    .powerImg a:hover svg {
+      fill: #c6c5dd; }
+
+@media only screen and (min-width: 48em) {
+  /* line 61, ../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
+  * html {
+    font-size: 112.5%; }
+
+  /* line 64, ../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
+  html {
+    font-size: 18px;
+    line-height: 0.5em; }
+
+  /* line 286, sass/screen.scss */
+  html {
+    background: #201C3C;
+    line-height: 2em; }
+
+  /* line 291, sass/screen.scss */
+  body {
+    background: -moz-linear-gradient(top, #040408 0%, #201c3c 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #040408), color-stop(100%, #201c3c));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #040408 0%, #201c3c 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #040408 0%, #201c3c 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #040408 0%, #201c3c 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, #040408 0%, #201c3c 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#040408', endColorstr='#201c3c',GradientType=0 );
+    /* IE6-9 */ }
+
+  /* line 301, sass/screen.scss */
+  section {
+    margin: 0 auto;
+    max-width: 768px;
+    display: block;
+    width: 85%;
+    padding: 0;
+    position: relative;
+    top: 42%;
+    text-align: center;
+    -webkit-transform: translateY(-45%);
+    -moz-transform: translateY(-45%);
+    -ms-transform: translateY(-45%);
+    transform: translateY(-45%); }
+    /* line 316, sass/screen.scss */
+    section img {
+      width: 50%;
+      height: auto; }
+
+  /* line 322, sass/screen.scss */
+  aside {
+    background: rgba(10, 9, 20, 0.3);
+    font-size: 90%;
+    height: 100%;
+    margin-right: -30%;
+    overflow-y: auto;
+    padding: 0;
+    position: fixed;
+    right: -90%;
+    top: 0;
+    transition: margin-right 0.4s ease 0s, right 0.4s ease 0s, width 0.4s ease 0s;
+    width: 30%;
+    z-index: 1000; }
+    /* line 336, sass/screen.scss */
+    aside div {
+      margin: 10em 2em 2em 2em;
+      max-width: 768px; }
+
+  /* line 342, sass/screen.scss */
+  pre {
+    background: #050509; }
+
+  /* line 346, sass/screen.scss */
+  .wrapper {
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: relative; }
+    /* line 352, sass/screen.scss */
+    .wrapper.active {
+      width: 50%;
+      background-size: contain;
+      background-position: center top; }
+      /* line 357, sass/screen.scss */
+      .wrapper.active section {
+        top: 45%;
+        -webkit-transform: translateY(-45%);
+        -moz-transform: translateY(-45%);
+        -ms-transform: translateY(-45%);
+        transform: translateY(-45%); }
+      /* line 365, sass/screen.scss */
+      .wrapper.active aside {
+        margin-right: 0;
+        right: 0;
+        width: 50%;
+        box-shadow: inset 1px 0px 10px rgba(4, 4, 8, 0.5);
+        border-left: 1px solid rgba(78, 76, 117, 0.2);
+        border-top: none; }
+      /* line 375, sass/screen.scss */
+      .wrapper.active .ss-icon {
+        display: none; }
+
+  /* line 382, sass/screen.scss */
+  .links li {
+    width: 33.33%; }
+    /* line 385, sass/screen.scss */
+    .links li:nth-child(3) {
+      display: block; }
+
+  /* line 391, sass/screen.scss */
+  h1, h2, h3, h4, h5, h6 {
+    color: #EEE;
+    font-family: "ff-tisa-web-pro";
+    font-weight: 700; }
+
+  /* line 397, sass/screen.scss */
+  .extrabig {
+    font-weight: 200;
+    letter-spacing: .2em;
+    text-shadow: 0px 1px 30px rgba(114, 109, 211, 0.47), 0px 1px 0px rgba(188, 186, 255, 0.25); } }
+@media only screen and (min-width: 60em) {
+  /* line 422, sass/screen.scss */
+  .wrapper.active {
+    width: 60%; }
+    /* line 425, sass/screen.scss */
+    .wrapper.active aside {
+      width: 40%; }
+      /* line 427, sass/screen.scss */
+      .wrapper.active aside div {
+        margin: 10em auto 2em auto;
+        width: 80%; } }
+@media only screen and (min-width: 60.6em) {
+  /* line 454, sass/screen.scss */
+  .wrapper aside.active div {
+    margin: 10em auto 2em auto;
+    width: 90%; }
+  /* line 462, sass/screen.scss */
+  .wrapper.active .ss-icon {
+    display: inline-block !important; } }

@@ -1,0 +1,467 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+//@import "compass/reset";
+@import "compass/typography/vertical_rhythm";
+
+$base-font-size: 16px;
+$base-line-height: 8px;
+ 
+@include establish-baseline;
+ 
+html {
+  @include adjust-leading-to(4);
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+// Mobile Fizirst
+
+html, body {
+	height: 100%;
+}
+
+body {
+	background: #17162E; /* Old browsers */
+	color: #A6A5CA;
+	font-family: "jaf-facitweb", Arial, Helvetica, sans-serif;
+	font-weight: 200;
+}
+
+section {
+	padding: 0 2em;
+	text-align: center;
+
+	img {
+		width: 70%;
+		height: auto;
+	}
+
+	> h2 {
+		color: darken(#A6A5CA, 25%);
+		margin: 1em 0 0;
+
+		em {
+			color: #A6A5CA;
+		}
+	}
+
+	> p {
+		@include adjust-font-size-to(15px);
+		margin-bottom: 1.5em;
+	}
+}
+
+aside {
+	background: rgba(15,14,28,0.8);
+	border-top: 1px solid rgba(78,76,117,0.5);
+	box-shadow: inset 1px 0px 10px rgba(4,4,8,.5);
+	padding: 2em;
+
+	ul, ol {
+		padding-left: 0;
+
+		li {
+			@include adjust-font-size-to(14px);
+			margin-bottom: 1em;
+		}
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #fafafa;
+	font-family: "ff-tisa-web-pro", Georgia, "Times New Roman", Serif;
+	font-weight: 100;
+
+	text-shadow: 0px 1px 0px #020407;
+
+	small {
+		color: darken(#fafafa, 30%);
+		font-weight: 100;
+	}
+}
+
+h5 {
+	font-weight:100;
+	font-size: 80%;
+	text-transform: uppercase;
+}
+
+blockquote {
+	@include adjust-font-size-to(18px);
+	color: lighten(#17162E, 75%);
+	margin: 2em 0;
+	text-align: center;
+	line-height: 2em;
+}
+
+p {
+	text-shadow: 0px 1px 0px #020407;
+}
+
+a {
+	color: #E45758;
+	text-decoration: none;
+
+	&:hover {
+		color: lighten(#E45758, 20%);
+	}
+}
+
+pre {
+	background:rgba(5, 5, 9, 0.49);
+	margin: 1em 0;
+	text-align: left;
+	border-radius: 4px;
+	padding: 2em 1em;
+	@include adjust-font-size-to(14px);
+	color: #00CEA5;
+}
+
+.extrabig {
+	color: #01000F;
+	font-family: "jaf-facitweb";
+	font-weight: 200;
+	@include adjust-font-size-to(52px);
+	letter-spacing: .1em;
+	margin: 0;
+	text-shadow: 0px 1px 30px rgba(114, 109, 211, 0.37), 0px 1px 0px rgba(188, 186, 255, 0.25);
+}
+
+.extrasmall {
+	@include adjust-font-size-to(13px);
+
+	a {
+		color: #535171;
+
+		&:hover {
+			color: lighten(#4E4C75, 20%)
+		}
+	}
+
+	img {
+		position: relative;
+		left: 4px;
+		bottom: 3px;
+		height: 18px !important;
+		opacity: 0.7;
+		width: 1.1em;
+		height: 100%;
+	}
+}
+
+.lead {
+	@include adjust-font-size-to(18px);
+	@include adjust-leading-to(4);
+
+	em {
+		color: darken(#A6A5CA, 30%)
+	}
+	
+}
+
+.links {
+	list-style: none;
+	margin: 0;
+	padding: 0 0 3.5em 0;
+
+	li {
+		width: 50%;
+		float: left;
+		display: block;
+
+	&:nth-child(3) {
+		display: none;
+	}
+
+		a {
+			@include adjust-font-size-to(14px);
+			border: 1px solid #4E4C75;
+			border-radius: 3px;
+			display: block;
+			margin: 0 5px;
+			text-align: center;
+			padding: .5em 0;
+			text-decoration: none;
+			color: #A6A5CA;
+
+			&:hover, &.active {
+				border: 1px solid #E45758;
+				background: #E45758;
+				color: #01000F;
+			}
+		}
+	}
+	li:first-child a {
+		margin-left: 0;
+	}
+	li:last-child {
+		margin-right: 0;
+		padding-right: 0;
+	}
+}
+
+hr {
+	border-top: 1px solid rgba(127, 125, 185, 0.18);
+	clear: both;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.ss-icon {
+	position: relative;
+	bottom: -2px;
+	left: 3px;
+}
+
+.powerImg {
+	float: left;
+	margin-bottom: 2em;
+	width: 100%;
+
+	 a {
+		display: block;
+		float: left;
+		width: 100%;
+
+		svg {
+			float: left;
+			margin-right: 8%;
+			width: 10%;
+			height: 100%;
+			fill: #A6A5CA;
+		}
+
+		span {
+			float: left;
+			width: 80%;
+		}
+
+		> span {
+			@include adjust-font-size-to(17px);
+			margin-bottom: .5em;
+		}
+
+ 	 	> span + span {
+			@include adjust-font-size-to(13px);
+			color:#A6A5CA; 
+		}
+
+		&:hover svg {
+			fill: lighten(#A6A5CA, 10%);
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Min width 769 - so bigger than ipad
+
+
+@media only screen and (min-width: 48em) {
+
+	$base-font-size: 18px;
+	$base-line-height: 9px;
+	 
+	@include establish-baseline;
+	 
+	html {
+		background: #201C3C;
+	  @include adjust-leading-to(4);
+	}
+
+    body {
+    	background: -moz-linear-gradient(top,  rgba(4,4,8,1) 0%, rgba(32,28,60,1) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(4,4,8,1)), color-stop(100%,rgba(32,28,60,1))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  rgba(4,4,8,1) 0%,rgba(32,28,60,1) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  rgba(4,4,8,1) 0%,rgba(32,28,60,1) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  rgba(4,4,8,1) 0%,rgba(32,28,60,1) 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  rgba(4,4,8,1) 0%,rgba(32,28,60,1) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#040408', endColorstr='#201c3c',GradientType=0 ); /* IE6-9 */
+    }
+
+    section {
+    	margin: 0 auto;
+		max-width: 768px;
+		display: block;
+		width: 85%;
+		padding: 0;
+		position: relative;
+		top: 42%;
+		text-align: center;
+		-webkit-transform: translateY(-45%);
+		-moz-transform: translateY(-45%);
+		-ms-transform: translateY(-45%);
+		transform: translateY(-45%);
+
+
+		img {
+			width: 50%;
+			height: auto;
+		}
+    }
+
+    aside {
+    	background: rgba(10,9,20,0.3);
+    	font-size: 90%;
+		height: 100%;
+		margin-right: -30%;
+		overflow-y: auto;
+		padding: 0;
+		position: fixed;
+		right: -90%;
+		top: 0;
+		transition: margin-right 0.4s ease 0s, right 0.4s ease 0s, width 0.4s ease 0s;
+		width: 30%;
+		z-index: 1000;
+		
+    	div {
+    		margin: 10em 2em 2em 2em;
+    		max-width: 768px;
+    	}
+    }
+
+    pre {
+		background:rgba(5, 5, 9, 1);
+	}
+
+    .wrapper {
+		left: 0;
+		width: 100%;
+    	height: 100%;
+    	position: relative;
+    	
+    	&.active {
+    		width: 50%;
+    		background-size: contain;
+    		background-position: center top;
+    		
+    		section {
+    			top: 45%;
+				-webkit-transform: translateY(-45%);
+				-moz-transform: translateY(-45%);
+				-ms-transform: translateY(-45%);
+				  transform: translateY(-45%);
+    		}
+
+    		aside {
+				margin-right: 0;
+				right: 0;
+				width: 50%;
+				box-shadow: inset 1px 0px 10px rgba(4,4,8,.5);
+				border-left: 1px solid rgba(78,76,117,0.2);
+				border-top: none;
+
+			}
+
+			.ss-icon {
+				display: none;
+			}
+    	}
+    }
+
+    .links {
+    	li {
+    		width: 33.33%;
+
+    		&:nth-child(3) {
+    			display: block;
+    		}
+    	}
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+		color: #EEE;
+		font-family: "ff-tisa-web-pro";
+		font-weight: 700;
+	}
+
+    .extrabig {
+		font-weight: 200;
+		letter-spacing: .2em;
+		text-shadow: 0px 1px 30px rgba(114, 109, 211, 0.47), 0px 1px 0px rgba(188, 186, 255, 0.25);
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// width ~ small desktop
+
+@media only screen and(min-width:60em){
+
+	.wrapper {
+		&.active {
+			width: 60% ;
+
+			aside {
+				width: 40%;
+				div {
+					margin: 10em auto 2em auto;
+					width: 80%;
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// errything else
+
+@media only screen and(min-width:60.60em)  {
+
+	.wrapper {
+		aside {
+			&.active {
+				div {
+					margin: 10em auto 2em auto;
+					width: 90%;
+				}
+			}
+		}
+
+		&.active {
+			.ss-icon {
+				display: inline-block !important;
+			}
+		}
+	}
+}

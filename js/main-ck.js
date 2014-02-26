@@ -1,0 +1,1 @@
+$(function(){$(".docs").click(function(e){$(this).toggleClass("active");$(".wrapper").toggleClass("active");$(".extrabig").fitText(.6,{minFontSize:"36px",maxFontSize:"96px"});return!1});$(".extrabig").fitText(.6,{minFontSize:"36px",maxFontSize:"96px"})});

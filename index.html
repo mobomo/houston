@@ -102,6 +102,11 @@
 
                     <p>Getting Houston up and running is a snap. Simply fork <a href="https://github.com/intridea/houston">this repository,</a> and deploy! We recommend an easy platform like <a href="http://heroku.com">Heroku.</a> You'll have the option to configure Google sign-on and other services once you're up and running.</p>
                     
+                    <pre><code>
+$ git push heroku 
+$ heroku run rake db:setup
+                    </code></pre>
+
                     <h4>To get started locally with Rails:</h4>
 
                     <pre><code>$ cp config/database.yml.template config/database.yml</code></pre>

@@ -1,0 +1,29 @@
+<%= link_to "<< Back to Settings", settings_path %>
+<div class="well">
+  <%= form_for AppSettings, url: settings_update_app_settings_path, method: :put do |f| %>
+    <div class="control-group">
+      <%= f.label 'API key', 'API key', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :dashboard_api_key %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label 'Tracker ID', 'Google Analytics Tracker ID', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :google_analytics_tracker %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label 'Feedback URL', 'Feedback Javascript URL', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :feedback_url %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= submit_tag "Save", :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', settings_edit_app_settings_path, :class => 'btn' %>
+    </div>
+  <% end %>
+</div>

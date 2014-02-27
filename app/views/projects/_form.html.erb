@@ -1,0 +1,143 @@
+<%= form_for setup_project(@project), :html => { :class => 'form-horizontal projects' } do |f| %>
+  <div class="control-group">
+    <%= f.label :client, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :client, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :project_manager, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :project_manager, options_for_select(@project_managers, selected: @project.project_manager), include_blank: true, size: 3, class: "span1" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :date_signed, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :date_signed, :class => 'date_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :date_kickoff, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :date_kickoff, :class => 'date_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :date_target, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :date_target, :class => 'date_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :is_confirmed, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :is_confirmed, :class => 'check_box' %>
+      <% if @project.is_confirmed? %>
+      <span class='help-block'><%= confirmed_info(@project) %></span>
+      <% end %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :date_delivered, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :date_delivered, :class => 'date_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :is_delivered, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :is_delivered, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :status, :class => 'control-label' %>
+    <div class="controls">
+      <%#= f.text_field :status, :class => 'text_field' %>
+      <%= f.select :status, options_for_select(["green", "yellow", "red", "pipeline"], selected: f.object.status), include_blank: true, size: 3, class: "span1" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "% Complete", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :percent_complete, :class => 'text_field' %>
+      <span class="help-block">ex. 0.90</span>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "Bug Tracker", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :url_pmtool, :class => 'text_field' %>
+      <span class="help-block">ex. http://company.atlassian.com/browse/PROJ</span>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "Demo", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :url_demo, :class => 'text_field' %>
+      <span class="help-block">ex. http://awesome.herokuapp.com</span>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :hours_budget, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :hours_budget, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :hours_used, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :hours_used, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :rate, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :rate, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :comment, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :comment, :class => 'text_area span4', :rows => 5  %>
+      <span class="help-block">Supports Markdown</span>
+    </div>
+  </div>
+  
+<!-- 
+  <h3>Milestones</h3><hr>
+  <div id="milestones">
+    <%= f.fields_for :milestones do |milestone| %>
+      <%= render 'milestone_fields', :f => milestone %>
+    <% end %>
+    <div class="links">
+      <%#= link_to_add_association 'Add Milestone', f, :milestones %>
+    </div>
+  </div>
+-->
+  
+  <h3>Skills</h3>
+  <div class="control-group skills">
+
+    <%= f.fields_for :required_skills do |ff| %>
+      <div class="controls">
+        <%= ff.hidden_field :skill_id %>
+        <%= ff.check_box :_destroy, {:checked => ff.object.persisted?}, '0', '1' %>
+        <%= ff.label :_destroy, ff.object.skill.name, :class => 'checkbox inline' %>
+        <%= ff.select :level, options_for_select([1,2,3,4,5], selected: ff.object.level), include_blank: true, size: 3, class: "span1" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                projects_path, :class => 'btn' %>
+  </div>
+<% end %>

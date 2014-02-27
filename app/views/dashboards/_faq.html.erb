@@ -1,0 +1,33 @@
+<div class="col-md-4">
+  <div class="vis-mod handbook">
+    <% if Configuration::Confluence.configured? %>
+      <div class="question">
+        <br />
+        <div class="progress progress-striped active">
+          <div class="progress-bar progress-bar-info"  role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+            <span class="sr-only">100% Complete </span>
+          </div>
+        </div>
+      </div>
+      <div id="search">
+
+        <div class="row">
+          <%= faq_entry_point_link %>
+        </div>
+
+      </div>
+    <% else %>
+
+      <div class="question">
+        Confluence not configured
+      </div>
+      <div id="search">
+
+        <div class="row">
+        </div>
+      </div>
+
+    <% end %>
+
+  </div>
+</div>

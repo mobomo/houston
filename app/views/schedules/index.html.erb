@@ -1,0 +1,86 @@
+<h2><%= params[:week] == "last" ? "Schedules You Should Send Out In Last Week" : "Schedules You Should Send Out In This Week" %></h2>
+		-- last updated on: <%= Import.last_time.to_date %> |
+		-- last nightly import on: <%= Import.last_nightly_time.to_date %> |
+		-- last auto-sending emails on: <%= AppSettings.done_sending_weekly_mails_time %>
+<br /><br />
+<div style="float:left; width:200px;">
+  <div class="btn-group">
+    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+      Filter By User Group
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= link_to "All Active Groups", schedules_path %></li>
+      <% @groups.each do |group| %>
+        <li><%= link_to group.name, schedules_path(:group => group.name, :week => params[:week])%></li>
+      <% end %>
+      <li><%= link_to "All Groups", schedules_path(:group => "all", :week => params[:week]) %></li>
+    </ul>
+  </div>
+</div>
+<div style="float:left; width:200px;">
+  <div class="btn-group">
+    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+      Filter By Week
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= link_to "Should Send In This Week", schedules_path(:group=>params[:group]) %></li>
+      <li><%= link_to "Should Send In Last Week", schedules_path(:week => "last", :group=>params[:group])%></li>
+    </ul>
+  </div>
+</div>
+
+<%= render 'index_actions', actions: schedule_actions %>
+
+<br/><hr>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="width: 15%">Send Mail To</th>
+      <th style="width: 15%">For Week</th>
+      <th style="width: 45%">Mail Message</th>
+      <th style="width: 10%">Status</th>
+      <th style="width: 15%">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @schedules.each do |schedule| %>
+      <% @schedule = schedule %>
+      <% builder = MailBuilder.new(schedule) %>
+      <% cache "user-schedule#{schedule.id}-item-#{schedule.user.updated_at.to_i}" do %>
+        <tr>
+          <td><%= schedule.user.try(:name) %><br />
+              <%= link_to 'schedule', '#', :rel => "popover", "data-content" => render_summary_table(builder, :regular).to_str, :class => 'btn btn-mini', 'data-html' => true %>
+              <% if schedule.user.try(:current_pm?) -%>
+                <%= link_to 'pm-data', '#', :rel => "popover", "data-content" => render_summary_table(builder, :pm).to_str, :class => 'btn btn-mini', 'data-html' => true %>
+              <% end -%>
+          </td>
+          <th><%= "#{(schedule.week_start + 1.days).to_date.strftime("%m/%d")} - #{(schedule.week_start + 1.weeks).to_date.strftime("%m/%d")}" %></th>
+          <td><%= schedule.message %></td>
+          <td><%= schedule.status %></td>
+          <td>
+            <% if can? :update, schedule %>
+            <%= link_to 'Compose Mail', edit_schedule_path(schedule), :class => 'btn btn-mini btn-primary' %><br />
+            <% end %>
+
+            <% if can? :destroy, schedule %>
+            <%= link_to 'Destroy', schedule_path(schedule), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end -%>
+    <% end %>
+  </tbody>
+</table>
+
+<%= javascript_tag do %>
+  function check_importing_status(){
+    $.getScript('/schedules/check_importing_status');
+  }
+  
+  function check_sending_status(){
+    $.getScript('/schedules/check_sending_status');
+  }
+<% end -%>

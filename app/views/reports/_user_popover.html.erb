@@ -1,0 +1,25 @@
+<div class="popover-html">
+  <table class="table table-bordered table-condensed">
+
+    <tr>
+      <th width="150">Client</th>
+      <th width="150" class="textual">Project</th>
+      <% week_beginning_dates.each do |date| %>
+      <%= table_head_for_week_beginning(date, 'width' => 10) %>
+      <% end %>
+    </tr>
+
+    <% last_client = nil %>
+    <% row.each_project do |client, project, week_hours| %>
+      <tr>
+        <td><%= client unless client == last_client %></td>
+        <td class="textual"><%= project %></td>
+        <% week_hours.each do |hours| %>
+        <td><%= hours > 0 ? hours.to_i : '' %></td>
+        <% end %>
+      </tr>
+      <% last_client = client %>
+    <% end %>
+
+  </table>
+</div>

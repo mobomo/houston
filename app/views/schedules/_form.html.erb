@@ -1,0 +1,54 @@
+<%= form_for @schedule, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset style="width:500px;float:right;">
+    <legend>Review Mail Info. &nbsp;
+      <% if @schedule.user.current_pm? -%>
+        <%= link_to "Review Dev Mail", edit_schedule_path(@schedule, :type => "regular"), :class => "btn btn-mini" %>
+        <%= link_to "Review PM Mail", edit_schedule_path(@schedule, :type => "pm"), :class => "btn btn-mini" %>
+      <% end -%>
+    </legend>
+    <div class="control-group" >
+      <%= review_mail(@schedule, (params[:type] || "regular")).html_safe %>
+    </div>
+  </fieldset>
+  <fieldset style="width:500px;">
+    <legend><%= controller.action_name.capitalize %> <%= @schedule.user.name %>'s Schedule Message</legend>
+    <div class="control-group">
+      <%= f.label :from, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.select :from, options_for_select(@users_for_select,@schedule.from), :include_blank => true, :prompt => 'Select From', :style => "width:385px;", :class => 'text_field chzn-select' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :cc, :class => 'control-label' %>
+      <div class="controls">
+        <%= select_tag "schedule[cc]", options_for_select(@users_for_select, @schedule.cc_emails), :multiple => true, :style => "width:385px;", :class => 'text_field chzn-select' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :message, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :message, :class => 'text_area', :style => "width:385px;height:200px;" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :ending_content, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :ending_content, :class => 'text_area', :style => "width:385px;height:200px;" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :daily_schedule, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :daily_schedule, :value => @schedule.daily_schedule.data.inspect.gsub('], [',"],\n["), :class => 'text_area', :style => "width:385px;height:200px;" %>
+      </div>
+    </div>
+  </fieldset>
+  <div class="form-actions">
+    <%= f.submit "Step1: Save For Review", :class => 'btn btn-primary' %>
+    <%= link_to 'Cancel', schedules_path, :class => 'btn' %>
+    <%= f.submit "Step2: Send Dev Mail", :confirm => "Are you sure?", :class =>  "btn btn-danger" %>
+    <% if @schedule.user.current_pm? -%>
+      OR <%= f.submit 'Step3: Send PM Mail', :confirm => "Are you sure?", :class => 'btn btn-danger' %>
+    <% end -%>
+  </div>
+<% end %>

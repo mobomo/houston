@@ -1,0 +1,16 @@
+<div class="vis-mod leave">
+  <p><%= link_to 'Create new leave request', new_leave_request_url %></p>
+
+  <% if @pending_leave_requests.present? %>
+  <h3>Pending Leave Requests</h3>
+  <%= render   'recent_leave_requests', {
+        leave_requests: @pending_leave_requests,
+        show_name: can?(:manage, LeaveRequest) } %>
+  <% end %>
+
+  <% if @recent_leave_requests.present? %>
+  <h3>Recent Leave Requests</h3>
+  <%= render   'recent_leave_requests', {
+        leave_requests: @recent_leave_requests } %>
+  <% end %>
+</div>

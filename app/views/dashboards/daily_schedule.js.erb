@@ -1,0 +1,3 @@
+var html = "<%= j render('my_schedule', {daily_schedule: @daily_schedule, selected_at: @daily_schedule_at.to_i}) %>";
+
+$(".my_schedule_container").html(html);

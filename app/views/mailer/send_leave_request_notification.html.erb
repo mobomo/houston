@@ -1,0 +1,12 @@
+Hi <%= @leave_request.user.first_name %>,
+<br />
+<br />
+Your leave request has been <%= @status %>
+<% if !@leave_request.approved? %>
+  Please contact <%= @leave_request.approver.first_name %> if you have any questions.
+<% end %>
+<br />
+<br />
+Reason: <%= @leave_request.reason_for_leaving %> <br />
+Start Date: <%= @leave_request.formatted_start_date %><br />
+End Date: <%= @leave_request.formatted_end_date %>

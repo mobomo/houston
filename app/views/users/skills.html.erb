@@ -1,0 +1,32 @@
+<ul class="nav nav-tabs">
+  <li>
+    <%= link_to "Settings", edit_user_path(@user)  %>
+  </li>
+  <li class="active">
+    <%= link_to "Skills", skills_user_path(@user) %>
+  </li>
+</ul>
+<%= form_for setup_user(@user), :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend>Edit User Skills</legend>
+
+    <div class="control-group skills">
+      <%= f.label :skills, :class => 'control-label' %>
+
+        <%= f.fields_for :experiences do |ff| %>
+          <div class="controls">
+          <%= ff.hidden_field :skill_id %>
+          <%= ff.check_box :_destroy, {:checked => ff.object.persisted?}, '0', '1' %>
+          <%= ff.label :_destroy, ff.object.skill.name, :class => 'checkbox inline' %>
+          <%#= ff.label :_destroy, :level, :xclass => 'control-label'  %>
+          <%#= ff.number_field :level, value: ff.object.level, :in => (1..5)%>
+          <%= ff.select :level, options_for_select([1,2,3,4,5], selected: ff.object.level), include_blank: true, size: 3, class: "span1" %>
+          </div>
+        <% end %>
+    </div>
+    <div class="form-actions">
+      <%= f.submit "Update User Skills", :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', users_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>

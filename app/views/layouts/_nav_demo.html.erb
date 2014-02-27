@@ -1,0 +1,13 @@
+<li>
+  <a href="#" class="btn btn-default navbar-btn dropdown-toggle" data-toggle="dropdown">Switch User</a>
+
+  <ul id="nav-switch-user" class="dropdown-menu" role="menu">
+    <% User.all.each do |u| %>
+    <li><%= link_to u.name, switch_user_path(name: u.name) %></li>
+    <% end %>
+  </ul>
+</li>
+
+<li>
+  <%= link_to "Exit Demo Mode", setup_path, :class => 'btn btn-default navbar-btn', :role => 'button' %>
+</li>

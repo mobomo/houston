@@ -1,0 +1,1 @@
+$('[data-behaviour~=datepicker]').datepicker()

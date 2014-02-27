@@ -1,0 +1,48 @@
+<div class="well">
+  <h4>Active Client Projects
+    <br> 
+  </h4>
+  <table id="active-projects" class="table">
+    <thead>
+      <tr>
+        <th width="200">&nbsp;</th>
+        <th width="350">Milestones, Used vs Projected, Remaining</th>
+        <th colspan="2">Get 'er Done</th>
+        <th width="20">Hours Used</th>
+        <th width="20">Hours Rem.</th>
+        <th width="20">Weeks Rem.</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% if !projects.empty? %>
+      <% projects.each do |proj| %>
+      <% hours_budget = (proj.hours_budget.to_i || 0) %>
+      <% hours_used = (proj.hours_used.to_i || 0) %>
+      <% hours_remaining = (hours_budget - hours_used) %>
+      
+      <tr>
+        <td class="proj-name"><%= proj.name %></td>
+        <td class="chart-green" 
+            data-start="<%= proj.date_kickoff.to_time.to_i %>"
+            data-milestones="<%= proj.milestones.to_json %>"
+            data-end="<%= proj.date_target.to_time.to_i %>"
+            data-expected="<%= proj.expected_progress %>"
+            data-remaining="<%= hours_remaining %>" 
+            data-used="<%= hours_used %>">
+        </td>
+        <td><%= proj.date_target.strftime('%m/%d') %></td>
+        <td class="muted"><%= proj.fuzzy_due_date %></span></td>
+        <td><%= hours_used %></td>
+        <td><%= hours_remaining %></td>
+        <td><%= proj.weeks_remaining %></td>
+      </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td>&nbsp;</td>
+        <td colspan="4" class="muted">No projects!</td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,43 @@
+body.dashboards {
+  background:#181e23;
+  color:#d1d2d3;
+
+  .jumbotron {
+    color: #424b52;
+  }
+
+  h1,h2,h3,h4,h5{
+    color:#fff;
+  }
+
+}
+
+#active-projects {
+  background-color: white;
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 18px
+
+  td {
+    vertical-align: middle;
+  }
+
+  tr td:nth-child(2) {
+    height: 50px;
+  }
+
+  .proj-name {
+    text-align: right;
+  }
+
+  .muted {
+    color: #999999;
+  }
+}
+
+.current-week {
+  border-left: 2px solid #999 !important;
+  border-right: 2px solid #999 !important;
+  font-weight: bold !important;
+}

@@ -1,0 +1,45 @@
+<a href="#" class="btn btn-default navbar-btn dropdown-toggle" data-toggle="dropdown">Hey, <%= current_user.name %></a>
+
+<ul id="nav-menu" class="dropdown-menu" role="menu">
+  <% if can?(:read, Report::Bench) && can?(:read, Report::Pipeline) %>
+  <li><%= link_to "Reports", reports_path  %></li>
+  <% end %>
+
+  <% if can? :index, Schedule %>
+  <li><%= link_to "Schedules", schedules_path  %></li>
+  <% end %>
+
+  <% if can? :index, Project %>
+  <li><%= link_to "Projects", projects_path  %></li>
+  <% end %>
+
+  <% if can? :index, Group %>
+  <li><%= link_to "Groups", groups_path  %></li>
+  <% end %>
+
+  <% if can? :index, User %>
+  <li><%= link_to "Users", users_path  %></li>
+  <% end %>
+
+  <% if can? :index, Skill %>
+  <li><%= link_to "Skills", skills_path  %></li>
+  <% end %>
+
+  <% if can? :index, LeaveRequest %>
+  <li><%= link_to "Leave Requests", leave_requests_path  %></li>
+  <% end %>
+
+  <% if can? :index, RawItem %>
+  <li><%= link_to "RAW Data", raw_items_path  %></li>
+  <% end %>
+
+  <% if can? :index, DocAuth %>
+  <li><%= link_to "Switch Doc", '/doc_auths'  %></li>
+  <% end %>
+
+  <% if can? :manage, Configuration %>
+  <li><%= link_to "Settings", settings_path  %></li>
+  <% end %>
+
+  <li><%= link_to 'Logout', signout_path %></li>
+</ul>

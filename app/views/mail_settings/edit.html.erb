@@ -1,0 +1,61 @@
+<%= link_to "<< Back to Settings", settings_path %>
+<%= form_tag mail_settings_path, :method => :put, :html => { :class => 'form-horizontal' } do %>
+  <fieldset style="width:500px;float:right;">
+    <legend>East's Schedule Message Configuration</legend>
+    <div class="control-group">
+      <%= label_tag 'From', nil, :class => 'control-label' %>
+      <div class="controls">
+        <%= select_tag 'settings[east_from]', options_for_select(@users_for_select, AppSettings.east_from), :prompt => 'Select From', :style => "width:385px;", :class => 'text_field chzn-select' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= label_tag 'CC', nil, :class => 'control-label' %>
+      <div class="controls">
+        <%= select_tag "settings[east_cc]", options_for_select(@users_for_select, AppSettings.east_cc), :multiple => true, :prompt => 'Select Some People', :style => "width:385px;", :class => 'text_field chzn-select' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= label_tag "Message", nil, :class => 'control-label' %>
+      <div class="controls">
+        <%= text_area_tag "settings[east_message]", AppSettings.east_message, :class => 'text_area', :style => "width:385px;height:200px;" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= label_tag "Ending Content", nil, :class => 'control-label' %>
+      <div class="controls">
+        <%= text_area_tag "settings[east_ending_content]", AppSettings.east_ending_content, :class => 'text_area', :style => "width:385px;height:200px;" %>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset style="width:500px;">
+    <legend>West's Schedule Message Configuration</legend>
+    <div class="control-group">
+      <%= label_tag 'From', nil, :class => 'control-label' %>
+      <div class="controls">
+        <%= select_tag 'settings[west_from]', options_for_select(@users_for_select, AppSettings.west_from), :prompt => 'Select From', :style => "width:385px;", :class => 'text_field chzn-select' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= label_tag 'CC', nil, :class => 'control-label' %>
+      <div class="controls">
+        <%= select_tag "settings[west_cc]", options_for_select(@users_for_select, AppSettings.west_cc), :multiple => true, :prompt => 'Select Some People', :style => "width:385px;", :class => 'text_field chzn-select' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= label_tag "Message", nil, :class => 'control-label' %>
+      <div class="controls">
+        <%= text_area_tag "settings[west_message]", AppSettings.west_message, :class => 'text_area', :style => "width:385px;height:200px;" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= label_tag "Ending Content", nil, :class => 'control-label' %>
+      <div class="controls">
+        <%= text_area_tag "settings[west_ending_content]", AppSettings.west_ending_content, :class => 'text_area', :style => "width:385px;height:200px;" %>
+      </div>
+    </div>
+  </fieldset>
+  <div class="form-actions">
+    <%= submit_tag "Save Mail Settings", :class => 'btn btn-primary' %>
+    <%= link_to 'Cancel', edit_settings_mail_settings_path, :class => 'btn' %>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+<h1>Doc Auths</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Key</th>
+      <th>Current?</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @doc_auths.each do |doc_auth| %>
+      <tr>
+        <td><%= doc_auth.id %></td>
+        <td><%= link_to doc_auth.key, doc_auth_path(doc_auth) %></td>
+        <th><%= doc_auth.current? %></th>
+        <td><%= doc_auth.created_at %></td>
+        <td>
+          <% if can? :update, doc_auth %>
+          <%= link_to 'Edit', edit_doc_auth_path(doc_auth), :class => 'btn btn-mini' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if can? :create, DocAuth %>
+<%= link_to 'New Google Spreadsheet', new_doc_auth_path, :class => 'btn btn-primary' %>
+<% end %>

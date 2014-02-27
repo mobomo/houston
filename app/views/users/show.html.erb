@@ -1,0 +1,44 @@
+<h1>User</h1>
+
+<p>
+  <b>Name</b><br>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Email</b><br>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Is pm</b><br>
+  <%= @user.is_pm %>
+</p>
+
+<b>Skills</b>
+<ul class="inline">
+  <% @user.experiences.each do |e| %>
+      <li class="skill skill-level-#{e.level}"><%= e.skill.name %>&nbsp;<%= e.level %></li>
+  <% end %>
+</ul>
+
+<b>Projects</b>
+<ul class="inline">
+  <% @matched_projects.each do |match| %>
+      <li><%= match[0] %>&nbsp;<%= match[1] %></li>
+  <% end %>
+</ul>
+
+<div class="form-actions">
+  <% if can? :index, User %>
+  <%= link_to 'Back', users_path, :class => 'btn'  %>
+  <% end %>
+
+  <% if can? :update, @user %>
+  <%= link_to 'Edit', edit_user_path(@user), :class => 'btn' %>
+  <% end %>
+
+  <% if can? :destroy, @user %>
+  <%= link_to 'Delete', user_path(@user), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+  <% end %>
+</div>

@@ -1,0 +1,41 @@
+.leave_requests {
+  background-color: #181e23;
+
+  label {
+    display: block;
+    color: #d1d2d3;
+  }
+
+  input[type="text"],
+  textarea {
+    font-size: 12px;
+    display: block;
+    margin-bottom: 10px;
+    width: 50%;
+  }
+
+  .leave {
+    h3 {
+      margin-bottom: 2rem 0 1rem;
+    }
+  }
+}
+
+#leaveRequestModal {
+  .modal-header {
+    background-color: #181e23;
+
+    button {
+      color: #fff;
+    }
+  }
+
+  .leave_request {
+    textarea {
+      font-size: 12px;
+      display: block;
+      margin-bottom: 10px;
+      width: 50%;
+    }
+  }
+}

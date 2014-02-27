@@ -1,0 +1,52 @@
+<%= form_for @raw_item, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Raw Item</legend>
+
+    <div class="control-group">
+      <%= f.label :status, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :status, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :user_id, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :user_id, :class => 'number_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :client, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :client, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :project, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :project, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :skill, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :skill, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :billable, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.check_box :billable, :class => 'check_box' %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', raw_items_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>

@@ -1,0 +1,35 @@
+.inactive-projects-container {
+  display: none;
+}
+
+.popover {
+  width: auto;
+  max-width: 950px;
+}
+
+.reports {
+
+  table {
+    .current-week {
+      border-left: 2px solid #999 !important;
+      border-right: 2px solid #999 !important;
+      font-weight: bold;
+    }
+    th,td {
+      text-align: center !important;
+    }
+    th:first-child, td:first-child, th.textual, td.textual {
+      text-align: left !important;
+    }
+    td.text-danger.warning {
+      background-color: #F2DEDE !important;
+    }
+    td.bad {
+      background-color: #EFBFBF !important;
+    }
+  }
+
+
+
+}
+

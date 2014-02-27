@@ -1,0 +1,33 @@
+<% border = '1' %>
+<% bgcolor = 'white' %>
+
+<% if builder.schedule.daily_schedule.present? %>
+<p>
+  <% builder.schedule.daily_schedule.each do |i, name, project_hours| %>
+  <strong><%= name %>:</strong> <%= project_hours_summary(project_hours) %><br />
+  <% end %>
+</p>
+<% end %>
+
+<table border="<%= border %>" cellspacing='0' cellpadding='3'>
+  <tr>
+    <td align='center' bgcolor='<%= bgcolor %>'>Client</td>
+    <td align='center' bgcolor='<%= bgcolor %>'>Project</td>
+    <td align='center' bgcolor='<%= bgcolor %>'>PM</td>
+    <%= schedule_hours_cells(builder.hours_headers, bgcolor) %>
+  </tr>
+
+  <% builder.summary(:regular)[:raw_items].each_with_index do |item, i| %>
+  <tr>
+    <td bgcolor='<%= bgcolor %>'><%= item.client %></td>
+    <td bgcolor='<%= bgcolor %>'><%= item.project %></td>
+    <td bgcolor='<%= bgcolor %>'><%= item.linked_project.project_manager %></td>
+    <%= schedule_hours_cells(builder.summary(:regular)[:hours][i], bgcolor) %>
+  </tr>
+  <% end %>
+
+  <tr>
+    <td align='center' colspan='3' bgcolor='<%= bgcolor %>'>Total Hours</td>
+    <%= schedule_hours_cells(builder.summary(:regular)[:totals], bgcolor) %>
+  </tr>
+</table>

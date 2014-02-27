@@ -1,0 +1,22 @@
+<h1>Week Hour</h1>
+
+<p>
+  <b>Raw item</b><br>
+  <%= @week_hour.raw_item_id %>
+</p>
+
+<p>
+  <b>Week</b><br>
+  <%= @week_hour.week %>
+</p>
+
+<p>
+  <b>Hours</b><br>
+  <%= @week_hour.hours %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', week_hours_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_week_hour_path(@week_hour), :class => 'btn' %>
+  <%= link_to 'Delete', week_hour_path(@week_hour), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

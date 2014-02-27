@@ -1,0 +1,5 @@
+<% if @done_sending -%>
+  window.clearInterval(intMailer);
+  $(".indicator").hide();
+  window.location = '/schedules/weekly_send_mails';
+<% end -%>

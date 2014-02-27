@@ -1,0 +1,22 @@
+<%= link_to "<< Back to Settings", settings_path %>
+<div class="well">
+  <%= form_for AppSettings, url: settings_update_google_path, method: :put do |f| %>
+    <div class="control-group">
+      <%= f.label 'Client ID', 'Google OAuth Client ID', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :google_client_id %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label 'Client Secret', 'Google OAuth Client Secret', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.password_field :google_client_secret, value: AppSettings.google_client_secret %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= submit_tag "Save", :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', settings_edit_google_path, :class => 'btn' %>
+    </div>
+  <% end %>
+</div>

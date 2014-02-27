@@ -1,0 +1,37 @@
+<h1>Schedule</h1>
+
+<p>
+  <b>User</b><br>
+  <%= @schedule.user_id %>
+</p>
+
+<p>
+  <b>Message</b><br>
+  <%= @schedule.message %>
+</p>
+
+<p>
+  <b>Gdata content</b><br>
+  <%= @schedule.gdata_content.html_safe %>
+</p>
+
+<p>
+  <b>Week start</b><br>
+  <%= @schedule.week_start %>
+</p>
+
+<p>
+  <b>Week end</b><br>
+  <%= @schedule.week_end %>
+</p>
+
+<p>
+  <b>Status</b><br>
+  <%= @schedule.status %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', schedules_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_schedule_path(@schedule), :class => 'btn' %>
+  <%= link_to 'Delete', schedule_path(@schedule), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

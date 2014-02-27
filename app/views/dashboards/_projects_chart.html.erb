@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-12 vis-header">
+    <h2 class="pull-left">Get 'er done...</h2>
+    <button type="button" class="pull-right btn btn-default dropdown-toggle" data-toggle="dropdown">
+      Everyone <span class="caret"></span>
+      <%= projects_chart_user_select %>
+    </button>
+    <button type="button" class="pull-right btn btn-default dropdown-toggle" data-toggle="dropdown">
+      Clients <span class="caret"></span>
+      <%= projects_chart_client_select %>
+    </button>
+
+    <!-- <a class="pull-right vis-link" href>Submit RAW request</a> -->
+    <a class="pull-right vis-link" href="#my_schedule">My Schedule</a>
+  </div>
+</div>
+
+<div class="row">
+  <div id="main-vis">
+    <div class="projects_chart"></div>
+  </div>
+</div>

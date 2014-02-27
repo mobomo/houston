@@ -1,0 +1,18 @@
+<p>
+  Hi <%= @pm.name %>,
+</p>
+
+<p>
+  The target date of following projects has been changed in last 24 hours:
+</p>
+
+<% @changesets.each do |project, changesets| %>
+<div style="margin-top: 20px; padding: 10px; border: 1px solid #ccc;">
+  <%= pluralize(changesets.size, 'change') %> on <%= link_to "#{project.client} - #{project.name}", edit_project_url(project) %> target date:
+  <ul>
+    <% changesets.each do |changeset| %>
+    <li>from <%= changeset['date_target'].first %> to <%= changeset['date_target'].last %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>

@@ -1,0 +1,7 @@
+<div class="vis-mod leave">
+  <h3>Take a load off, <%= current_user.first_name %>.</h3>
+  <%= link_to 'Submit leave request', '#leaveRequestModal', { class: 'btn btn-primary btn-lg active', role: 'button', data: { toggle:'modal' } }  %>
+  <%= render 'leave_requests/recent_leave_requests', {
+        leave_requests: current_user.leave_requests.recent,
+        show_name: false } %>
+</div>

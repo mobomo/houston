@@ -1,0 +1,27 @@
+<div class="vis-mod my_schedule" id="my_schedule">
+  <h3>My Schedule</h3>
+
+  <div class='btn-group'>
+    <% options = my_schedule_dropdown_options %>
+    <% this_week = options.find {|opt| opt[0] =~ /^This Week/ } %>
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-week="<%= this_week[1] %>">
+      <%= this_week[0] %>: <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <% options.each do |(text, week)| %>
+      <li style="<%= 'display:none;' if week == this_week[1] %>" data-week="<%= week %>">
+        <%= link_to text, '#' %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="progress progress-striped active" style='margin-top: 20px;'>
+    <div class="progress-bar progress-bar-info"  role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+      <span class="sr-only">100% Complete </span>
+    </div>
+  </div>
+
+  <ul id="schedule">
+  </ul>
+</div>

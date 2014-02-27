@@ -1,0 +1,39 @@
+<%= link_to "<< Back to Settings", settings_path %>
+<div class="well">
+  <p>
+    <label for="">Access Token</label>
+    <span><%= current_user.harvest_token %></span>
+  </p>
+  <p>
+    <label for="">Refresh Token</label>
+    <span><%= current_user.harvest_refresh_token %></span>
+  </p>
+  <p>
+    <label for="">Expired At</label>
+    <span><%= current_user.expires_at %></span>
+  </p>
+  <p>
+    <a href="/auth/harvest" class="btn btn-primary">Auth Harvest</a>
+  </p>
+</div>
+
+<div class="well">
+  <%= form_tag settings_update_harvest_path, method: :put do %>
+    <div class="control-group">
+      <%= label_tag 'identifier', 'Harvest API Identifier', :class => 'control-label' %>
+      <div class="controls">
+        <%= text_field_tag 'identifier', AppSettings.harvest_identifier %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= label_tag 'secret', 'Harvest API Secret', :class => 'control-label' %>
+      <div class="controls">
+        <%= text_field_tag 'secret', AppSettings.harvest_secret %>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= submit_tag "Save", :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', settings_edit_harvest_path, :class => 'btn' %>
+    </div>
+  <% end %>
+</div>

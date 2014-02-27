@@ -1,0 +1,31 @@
+<%= form_for @week_hour, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Week Hour</legend>
+
+    <div class="control-group">
+      <%= f.label :raw_item_id, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :raw_item_id, :class => 'number_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :week, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :week, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :hours, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :hours, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', week_hours_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>

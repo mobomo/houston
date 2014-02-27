@@ -1,0 +1,60 @@
+<%- model_class = Project -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:client) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:date_kickoff) %></th>
+      <th><%= model_class.human_attribute_name(:date_target) %></th>
+      <th><%= model_class.human_attribute_name(:date_delivered) %></th>
+      <th><%= model_class.human_attribute_name(:status) %></th>
+      <th><%= model_class.human_attribute_name(:hours_budget) %></th>
+      <th><%= model_class.human_attribute_name(:hours_used) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= link_to project.id, project_path(project) %></td>
+        <td><%= project.client %></td>
+        <td><%= project.name %></td>
+        <td><%= project.date_kickoff %></td>
+        <td><%= project.date_target %></td>
+        <td><%= project.date_delivered %></td>
+        <td><%= project.status %></td>
+        <td><%= project.hours_budget %></td>
+        <td><%= project.hours_used %></td>
+        <td>
+          <% if can? :show, project %>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+                      project_path(project), :class => 'btn btn-mini' %>
+          <% end %>
+
+          <% if can? :update, project %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_project_path(project), :class => 'btn btn-mini' %>
+          <% end %>
+
+          <% if can? :destroy, project %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      project_path(project),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if can? :create, Project %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_project_path,
+            :class => 'btn btn-primary' %>
+<% end %>

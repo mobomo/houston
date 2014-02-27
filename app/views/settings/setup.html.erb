@@ -1,0 +1,54 @@
+<% if @config.errors.any? -%>
+<div id="error_explanation">
+   <h2><%= pluralize(@config.errors.count, "error") %> prohibited this configuration from being saved:</h2>
+   <ul>
+     <% @config.errors.full_messages.each do |msg| %>
+       <li> * <%= msg %></li>
+     <% end %>
+   </ul>
+</div>
+<% end -%>
+
+<div class='row'>
+  <div class='col-md-4'>
+    <h2>Option 1: Fill in basic info and get ready to log in users!</h2>
+    <%= form_for @config, :url => setup_path, :as => 'config_form', :html => { :class => 'form-horizontal setup' } do |f| %>
+      <div class="control-group">
+        <%= f.label "Google Oauth Client ID", :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :client_id, :class => 'text_field' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label "Google Oauth Client Secret", :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :client_secret, :class => 'text_field' %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= f.label "Your Google Email", :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :email, :class => 'text_field' %>
+          <p class="hint">(for SuperAdmin powers)</p>
+        </div>
+      </div>
+
+      <br/>
+
+      <div class="form-actions">
+        <%= f.submit "Let's do this", :class => 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class='col-md-2'> </div>
+
+  <% if AppSettings.mode.nil? %>
+  <div class='col-md-4'>
+    <h2>Option 2: Click below to enter demo mode. The fastest way to have fun.</h2>
+    <%= link_to 'Switch to Demo Mode', switch_mode_path(to: 'demo'), :class => 'btn btn-primary' %>
+  </div>
+  <% end %>
+</div>
+

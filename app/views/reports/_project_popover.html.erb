@@ -1,0 +1,29 @@
+<div class="popover-html">
+  <% report = Report::ProjectPopover.new proj %>
+  <% if !report.rows.empty? %>
+    <table class="table table-bordered table-condensed">
+      <tr>
+        <th width="150">Name</th>
+        <th>Role</th>
+        <% week_beginning_dates.take(5).each do |date| %>
+          <%= table_head_for_week_beginning(date, width: '10') %>
+        <% end %>
+      </tr>
+      <% report.rows.each do |row| %>
+        <tr>
+          <td><%= row.user_name %></td>
+          <td><%= row.skill %></td>
+          <% Dashboard.week_endings.take(5).each do |week_ending| %>
+            <td>
+              <% wh = row.week_hours.select{|wh| wh.week == week_ending } %>
+              <%= wh.empty? ? "&nbsp;".html_safe : wh.first.hours %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <p>No schedules for this project</p>
+  <% end %>
+</div>
+

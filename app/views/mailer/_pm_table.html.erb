@@ -1,0 +1,23 @@
+<% border = '1' %>
+<% bgcolor = 'white' %>
+
+<table border="<%= border %>" cellspacing='0' cellpadding='3'>
+  <tr>
+    <td align='center' bgcolor='<%= bgcolor %>'>Client</td>
+    <td align='center' bgcolor='<%= bgcolor %>'>Project</td>
+    <td align='center' bgcolor='<%= bgcolor %>'>Engineer</td>
+    <%= schedule_hours_cells(builder.hours_headers, bgcolor) %>
+  </tr>
+
+  <% last_client = last_project = nil %>
+  <% builder.summary(:pm)[:raw_items].each_with_index do |item, i| %>
+  <tr>
+    <td bgcolor='<%= bgcolor %>'><%= item.client if item.client != last_client %></td>
+    <td bgcolor='<%= bgcolor %>'><%= item.project if item.project != last_project %></td>
+    <td bgcolor='<%= bgcolor %>'><%= item.user_name %></td>
+    <%= schedule_hours_cells(builder.summary(:pm)[:hours][i], bgcolor) %>
+    <% last_client = item.client %>
+    <% last_project = item.project %>
+  </tr>
+  <% end %>
+</table>

@@ -1,0 +1,60 @@
+<% content_for :notification_bar do %>
+  <% if @pending_leave_requests.present? %>
+    <div class="alert alert-success">
+      <%= pluralize(@pending_leave_requests.size, 'leave request') %>
+      <%= link_to 'pending approval', leave_requests_url %>
+    </div>
+  <% end %>
+<% end %>
+
+<%= render :partial => "announcements"%>
+
+<%= render :partial => "projects_chart" %>
+
+<div class="row">
+  <div class="col-md-12">
+    <h5>Legend</h5>
+  </div>
+</div>
+
+<div id="lower-vis">
+
+  <div class="row full" >
+    <div class="col-md-4 my_schedule_container">
+      <%= render 'my_schedule' %>
+    </div>
+
+    <%= render :partial => "faq" %>
+
+    <div class="col-md-4">
+      <% if current_user %>
+        <%= render 'leave_requests/recent_leave_requests_panel', {
+              leave_requests: current_user.leave_requests.recent } %>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="row full">
+    <div class="col-md-6">
+      <%= render :partial => "pto" %>
+    </div>
+
+    <div class="col-md-6">
+      <div class="vis-mod leveling_up">
+        <button type="button" class="pull-right btn btn-default dropdown-toggle" data-toggle="dropdown">
+          Frameworks/Libs<span class="caret"></span>
+        </button>
+        <button type="button" class="pull-right btn btn-default dropdown-toggle" data-toggle="dropdown">
+          UX Engineering <span class="caret"></span>
+        </button>
+
+        <h3>We're leveling up</h3>
+        <!--<p>Here's what's trending from Github commits.</p>-->
+        <p>Coming soon - stay tuned!</p>
+        <img class="vis" src="/assets/commit_graph.png" style="opacity:0.2">
+      </div>
+    </div>
+  </div>
+
+  <%= render 'leave_requests/leave_request_modal', leave_request: LeaveRequest.new %>

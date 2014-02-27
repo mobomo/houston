@@ -1,0 +1,22 @@
+<div class="nested-fields">
+  <div class="field control-group">
+    <%= f.label :date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :date, :class => 'milestone_date', 'data-provide' => 'datepicker', 'data-date-format' => "yyyy-mm-dd" %>
+      <span class="help-block">Format: yyyy-mm-dd</span>
+    </div>
+  </div>
+  <div class="field control-group">
+    <%= f.label :notes, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :notes, rows: '3' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <%= link_to_remove_association "Remove Milestone", f %>
+    </div>
+  </div>
+  <hr>
+  
+</div>

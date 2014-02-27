@@ -1,0 +1,1 @@
+json.(@page, :id, :title, :content, :creator, :created, :modifier, :modified, :parent_id, :space, :url, :version)

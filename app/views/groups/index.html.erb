@@ -1,0 +1,38 @@
+<h1>Groups</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Group Name</th>
+      <th>Display in list</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @groups.each do |group| %>
+      <% @group = group %>
+      <tr>
+        <td><%= @group.name %></td>
+        <td><%= @group.display? %></td>
+        <td>
+          <% if can? :show, group %>
+          <%= link_to 'Show', group_path(group), :class => 'btn btn-mini' %>
+          <% end %>
+
+          <% if can? :update, group %>
+          <%= link_to 'Edit', edit_group_path(group), :class => 'btn btn-mini' %>
+          <% end %>
+
+          <% if can? :destroy, group %>
+          <%= link_to 'Destroy', group_path(group), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if can? :create, Group %>
+<%= link_to 'New', new_group_path, :class => 'btn btn-primary' %>
+<% end %>
+
+<br/ ><br />

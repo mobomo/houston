@@ -1,0 +1,2 @@
+module DocAuthsHelper
+end

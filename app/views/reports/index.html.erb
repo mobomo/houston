@@ -1,0 +1,82 @@
+<p class="pull-left muted">Last updated: <%= @last_update.in_time_zone("Eastern Time (US & Canada)").to_s(:long) + " EST" %></p>
+<p class="pull-right muted">
+  Jump to:
+  <a href="#bench">Bench Report</a> |
+  <a href="#bench">Pipeline</a>
+</p>
+<div class="clearfix"></div>
+
+<%#= render :partial => "delivery_chart", :locals => {:projects => @active} %>
+
+<h2>Active Projects:</h2>
+<%= render :partial => "projects_table", :locals => {:projects => @report.active} %>
+
+<div class="inactive-projects-wrapper">
+  <a href="#" class="pull-right" id="inactive-projects-toggle">Show inactive projects</a>
+  <div class="inactive-projects-container">
+    <h2>Inactive Projects:</h2>
+    <%= render :partial => "projects_table", :locals => { :projects => @report.inactive} %>
+  </div>
+</div>
+
+<h2>Upcoming Projects:</h2>
+<%= render :partial => "projects_table", :locals => {:projects => @report.upcoming} %>
+
+<h2>Just Wrapped:</h2>
+<%= render :partial => "projects_table", :locals => {:projects => @report.ended, :delivered => true} %>
+<p class="text-muted"><em>* Dates are approximate</em></p>
+
+<!-- Bench Report -->
+
+<h2 class="pull-left" id="bench">Bench Report<%= content_tag("em", " - #{params['team']}") if params["team"].present? %><%= content_tag("em", " - #{params['skill']}") if params["skill"].present? %></h2>
+<div class="pull-right">
+  <%= render :partial => "filter" %>
+</div>
+<table class="table table-striped table-bordered by-person">
+  <tr>
+    <th></th>
+    <th colspan="<%= Dashboard::SPAN+1 %>"><em>Week starting...</em></th>
+  </tr>
+  <tr>
+    <th width="250">Name</th>
+    <% week_beginning_dates.each do |date| %>
+      <%= table_head_for_week_beginning(date, 'width' => 30) %>
+    <% end %>
+  </tr>
+  <% @report.bench.rows.each do |row| %>
+  <tr>
+    <td>
+      <%= link_to row.user_name, "#", :class => "popover-trigger"  %>
+      <%= render 'user_popover', {row: row} %>
+    </td>
+    <% row.week_hours_sum.each do |hours| %>
+      <%= format_hours(hours.to_i, "td") %>
+    <% end %>
+  </tr>
+  <% end %>
+</table>
+<br />
+
+<h2 id="pipeline">Pipeline</h2>
+<table class="table table-bordered table-condensed by-project">
+  <tr>
+    <th width="15%">Client</th>
+    <th width="15%" class="textual">Name</th>
+    <% week_beginning_dates.each do |date| %>
+      <%= table_head_for_week_beginning(date) %>
+    <% end %>
+  </tr>
+
+  <% last_client = nil %>
+  <% @report.pipeline.rows.each do |row| %>
+    <tr<%= " class='warning'" if row.user_name.include?("TBD") %>>
+      <td><%= row.client unless row.client == last_client %></td>
+      <td class="textual<%= " text-error" if row.user_name.include?("TBD") %>"><%= row.user_name %><%= content_tag("span",' (PM)', :class => "muted") if row.skill.include?("PM") %></td>
+      <% row.week_hours.each do |hours| %>
+      <td><%= hours > 0 ? hours.to_i : '' %></td>
+      <% end %>
+    </tr>
+
+    <% last_client = row.client %>
+  <% end %>
+</table>

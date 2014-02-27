@@ -1,0 +1,17 @@
+<h1>Doc Auth</h1>
+
+<p>
+  <b>Key</b><br>
+  <%= @doc_auth.key %>
+</p>
+
+<p>
+  <b>Username</b><br>
+  <%= @doc_auth.username %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', doc_auths_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_doc_auth_path(@doc_auth), :class => 'btn' %>
+  <%= link_to 'Delete', doc_auth_path(@doc_auth), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

@@ -1,0 +1,22 @@
+<% show_name = false if local_assigns[:show_name].nil? %>
+<ul class="leave">
+<% if leave_requests.present? %>
+<% leave_requests.each do |leave_request| %>
+  <li>
+    <% if show_name %>
+      <strong><%= leave_request.user.name %>:</strong>
+    <% end %>
+    <strong><%= leave_request_date(leave_request) %></strong>
+    <%= leave_request.reason_for_leaving %>
+    <a href="<%= edit_leave_request_url(leave_request) %>">
+      <span class="<%= leave_request_class(leave_request) %>">
+        <%= leave_request_status(leave_request) %>
+        <span class="glyphicon <%= leave_request_glyph(leave_request) %>"></span>
+      </span>
+    </a>
+  </li>
+<% end %>
+<% else %>
+  <li>You have no leave requests!</li>
+<% end %>
+<ul>

@@ -1,0 +1,51 @@
+<% content_for :notification_bar do %>
+  <% if leave_request.errors.any? %>
+  <div class="alert alert-danger">
+    <p><%= pluralize(leave_request.errors.count, "error") %> prohibited this post from being saved:</p>
+    <ul>
+      <% leave_request.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end -%>
+    </ul>
+  </div>
+  <% end -%>
+<% end %>
+
+<%= form_for leave_request, html: { role: 'form' } do |f| %>
+<div class='row leave_requests'>
+  <div class="input-daterange input-group" id="datepicker">
+    <%= label_tag "When do you plan on taking off?" %>
+    <%= f.text_field(:start_date,
+                     value: leave_request.formatted_start_date,
+                     placeholder: 'mm/dd/yyyy',
+                     'data-behaviour' =>'datepicker',
+                     class: 'input-mini form-control')  %>
+
+    <%= label_tag "When will you be back?" %>
+
+    <%= f.text_field(:end_date,
+                     value: leave_request.formatted_end_date,
+                     placeholder: 'mm/dd/yyyy',
+                     'data-behaviour' =>'datepicker',
+                     class: 'input-mini form-control') %>
+  </div>
+
+  <%= label_tag(:reason_for_leaving, 'Reason For Leaving') %>
+  <%= f.text_area :reason_for_leaving, rows: '3' %>
+
+  <%= label_tag(:checked_with_supervisor, 'Have you checked with a supervisor?') %>
+  <%= f.text_area :checked_with_supervisor, rows: '3' %>
+
+  <div class="control-group">
+  <% if !leave_request.new_record? && leave_request.user != current_user && can?(:approve, leave_request) %>
+    <%= f.submit 'Approve', name: 'approve', class: 'btn btn-primary btn-lg' %>
+    <%= f.submit 'Deny Leave Request', name: 'deny', class: 'btn btn-danger btn-lg' %>
+  <% else %>
+    <%= f.submit class: 'btn btn-primary btn-lg' %>
+    <%= f.submit 'Withdraw Leave Request',
+          name: 'delete',
+          class: 'btn btn-danger btn-lg' unless leave_request.id.blank? %>
+  <% end %>
+  </div>
+</div>
+<% end %>

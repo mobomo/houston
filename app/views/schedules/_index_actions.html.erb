@@ -1,0 +1,26 @@
+<% p actions %>
+<% if actions.size > 0 %>
+<div style="float:left; width:180px;">
+  <div class="btn-group">
+
+    <%= link_to *(actions.shift) %>
+
+    <% if actions.size > 0 %>
+    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+      <span class="caret"></span>
+    </a>
+
+    <span class="indicator" style="display:none; float:right;">
+      <%= image_tag('/assets/icon-roller.gif') %>
+    </span>
+
+    <ul class="dropdown-menu">
+      <% actions.each do |action| %>
+      <li><%= link_to *action %></li>
+      <% end %>
+    </ul>
+    <% end %>
+
+  </div>
+</div>
+<% end %>

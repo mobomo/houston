@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title><%= @title || "Welcome to Houston" %></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <script type="text/javascript" src="//use.typekit.net/exz2vdf.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+        <%= stylesheet_link_tag "application", :media => "all" %>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <%= csrf_meta_tags %>
+    </head>
+    <body class="<%= controller.controller_name %>" data-controller="<%= controller.controller_path %>" data-action="<%= controller.action_name %>">
+      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <ul class="nav nav-pills pull-left">
+          <li><a href="/" class="btn btn-default navbar-btn" role="button"><span class="glyphicon glyphicon-home"></span></a></li>
+          <% if user_signed_in? %>
+          <li>
+            <%= render partial: 'layouts/nav_dropdown' %>
+          </li>
+          <% end %>
+          <% if AppSettings.mode == 'demo' %>
+            <%= render partial: 'layouts/nav_demo' %>
+          <% end %>
+        </ul>
+        <img class="logo pull-right" src="/assets/houston.png">
+      </nav>
+
+      <div id="container">
+
+        <div class="row">
+          <div class="col-md-12">
+            <% if flash[:notice].present? -%>
+              <div class="alert alert-success">
+                <%= flash[:notice] %>
+              </div>
+            <% end -%>
+            <% if flash[:alert].present? -%>
+              <div class="alert alert-error">
+                <%= flash[:alert] %>
+              </div>
+            <% end -%>
+
+            <% if content_for?(:notification_bar) -%>
+              <%= yield :notification_bar %>
+            <% end -%>
+          </div>
+        </div>
+
+        <% if user_signed_in? || setup_path?%>
+          <% if controller_name == 'dashboards' %>
+            <%= yield %>
+          <% else %>
+            <div class="row">
+              <div class="<%= @container_width.present? ? @container_width : "col-md-8 col-md-offset-2" %>">
+                <%= yield %>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+        <div class="row">
+          <div class="col-md-5 col-md-offset-3">
+            <div class="jumbotron">
+              <h1>Hey there!</h1>
+              <p>Please sign in with your Google login to access the Company Dashboard:</p>
+              <p><%= link_to 'Sign In', '/auth/google_oauth2', :class => "btn btn-primary btn-lg", :role => "button" %></p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+
+      </div>
+
+      <%= javascript_include_tag "application" %>
+      <%= yield :javascripts %>
+      <%= render partial: "layouts/feedback"%>
+    </body>
+</html>

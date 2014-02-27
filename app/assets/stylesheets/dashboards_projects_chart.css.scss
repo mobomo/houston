@@ -1,0 +1,136 @@
+.projects_selects {
+  height: 40px;
+  line-height: 90px;
+}
+
+.projects_chart {
+  background-image: image-url("projects-chart-background.png");
+
+  rect {
+    border: 2px solid #454b51;
+  }
+
+  .bars g rect {
+    &.status_red      { fill: #e15b00; }
+    &.status_yellow   { fill: #e8b234; }
+    &.status_green    { fill: #6dd1d5; }
+    &.status_pipeline { fill: #b5b7b8; }
+    &.status_unknow   { fill: #b5b7b8; }
+  }
+
+  .bars g text {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    &.status_red      { fill: #8c3b04; }
+    &.status_yellow   { fill: #936803; }
+    &.status_green    { fill: #4b8b8e; }
+    &.status_pipeline { fill: #7a7b7c; }
+    &.status_unknow   { fill: #7a7b7c; }
+  }
+
+  .x-axis text {
+    fill: #454b51;
+    font-size: 13px;
+    font-weight: bold;
+    text-anchor: middle;
+    text-transform: uppercase;
+  }
+
+  .x-axis path, .x-axis line {
+    fill: none;
+    stroke: none;
+    shape-rendering: crispEdges;
+  }
+
+  .today-tip {
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    .today-bg {
+      fill: #454b51;
+    }
+  }
+
+}
+
+.project_popover {
+  .popover-content {
+    min-width: 340px;
+    width: 500px;
+    color: #424b52;
+
+
+    .project_header {
+      height: 30px;
+      line-height: 30px;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 10px;
+      .target_date {
+        font-weight: bold;
+        font-size: 16px;
+        float: left;
+      }
+      .status {
+        float: right;
+        label {
+          display: inline;
+        }
+        .status_pattern {
+          display: inline-block;
+          height: 16px;
+          width: 16px;
+          position: relative;
+          top: 7px;
+          &.red { background-color: #e15b00; }
+          &.yellow { background-color: #e8b234; }
+          &.green { background-color: #6dd1d5; }
+          &.pipeline { background-color: #b5b7b8; }
+          &.unknow { background-color: #b5b7b8; }
+        }
+      }
+    }
+
+    .project_info {
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .project_hours {
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      label {
+        float: left;
+        text-align: right;
+        display: inline-block;
+        width: 75px;
+        font-weight: bold;
+      }
+      span {
+        float: left;
+        padding-left: 8px;
+        width: 385px;
+      }
+    }
+
+    .project_comments {
+      max-height: 150px;
+      overflow-y: auto;
+      label {
+        float: left;
+        text-align: right;
+        display: inline-block;
+        width: 60px;
+        font-weight: bold;
+      }
+      span {
+        float: left;
+        padding-left: 8px;
+        width: 380px;
+      }
+    }
+  }
+}

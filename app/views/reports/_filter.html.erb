@@ -1,0 +1,36 @@
+<div class="span3 btn-group filter pull-right">
+  <a class="btn dropdown-toggle pull-right" data-toggle="dropdown" href="#">
+    Filter:
+    <% unless params[:skill].blank? %>
+      <em><%= params[:skill] %></em>
+    <% else %>
+      <em>Skill (PM, UX, Rails, etc.)</em>
+    <% end %>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu pull-left">
+    <li><%= link_to "All", reports_path(:anchor => "bench") %></li>
+    <% @skills.each do |skill| %>
+      <li><%= link_to skill, reports_path(:skill => skill, :anchor => "bench") %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="span3 btn-group filter pull-right">
+  <a class="btn dropdown-toggle pull-right" data-toggle="dropdown" href="#">
+    Filter:
+    <% unless params[:team].blank? %>
+      <em><%= params[:team] %></em>
+    <% else %>
+      <em>Team (PM, UX, Rails, etc.)</em>
+    <% end %>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><%= link_to "All", reports_path() %></li>
+    <% @teams.each do |team| %>
+      <li><%= link_to team, reports_path(:team => team, :anchor => "bench") %></li>
+    <% end %>
+  </ul>
+</div>
+

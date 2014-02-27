@@ -1,0 +1,36 @@
+<h1>Raw Items</h1>
+<p style="color:red;">Note: This data is loaded from Google SpreadSheet</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>ROW NO.</th>
+      <th>Status</th>
+      <th>Resource</th>
+      <th>Client</th>
+      <th>Project</th>
+      <th>Skill</th>
+      <th>Billable</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @raw_items.each do |raw_item| %>
+      <tr>
+        <td><%= raw_item.id %></td>
+        <td><%= raw_item.row %></td>
+        <td><%= raw_item.status %></td>
+        <td><%= raw_item.user.name %></td>
+        <td style="width: 20%;"><%= raw_item.client %></td>
+        <td><%= raw_item.project %></td>
+        <td><%= raw_item.skill %></td>
+        <td><%= raw_item.billable %></td>
+        <td>
+          <% if can? :destroy, raw_item %>
+          <%= link_to 'Destroy', raw_item_path(raw_item), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

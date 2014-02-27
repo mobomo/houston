@@ -1,0 +1,28 @@
+<h1>Week Hours</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>User</th>
+      <th>Week</th>
+      <th>Hours</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @week_hours.each do |week_hour| %>
+      <tr>
+        <td><%= week_hour.id %></td>
+        <td><%= week_hour.raw_item.user.name %></td>
+        <td><%= week_hour.week.to_date.to_s(:db) %></td>
+        <td><%= week_hour.hours %></td>
+        <td>
+          <%= link_to 'Edit', edit_week_hour_path(week_hour), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', week_hour_path(week_hour), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New', new_week_hour_path, :class => 'btn btn-primary' %>

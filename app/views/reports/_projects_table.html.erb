@@ -1,0 +1,59 @@
+<%
+
+delivered ||= false
+
+ %>
+
+<table class="table table-bordered table-striped table-condensed">
+<thead>
+  <tr>
+    <th>&nbsp;</th>
+    <th width="15%">Client</th>
+    <th>Project</th>
+    <th width="20">&nbsp;</th>
+    <th width="20">&nbsp;</th>
+    <th width="15%">PM</th>
+    <th width="10%"><%= delivered ? "Delivered" : "Target" %></th>
+    <th width="10%">Original</th>
+    <th width="10%">Kickoff</th>
+    <th width="5%">Used</th>
+    <th width="5%">Rem.</th>
+  </tr>
+</thead>
+<tbody>
+<% if !projects.empty? %>
+  <% projects.each do |proj| %>
+  <%
+    tr_css = []
+    td_css = []
+    td_css << "text-success" if proj.date_delivered == proj.date_target && proj.date_delivered > Date.today
+    td_css << "text-error" if proj.date_delivered > proj.date_target
+    tr_css << "error" if proj.date_delivered < Date.today-3.days
+  %>
+  <tr>
+    <td<%= " class='status status-#{proj.status}'".html_safe unless proj.status.blank? %>>
+      <%= link_to "&nbsp;".html_safe, "#", {"data-original-title" => MarkdownRenderer.render(proj.comment)} unless proj.comment.blank? %>
+    </td>
+    <td><%= link_to proj.client, edit_project_path(proj) %><%= " *" unless proj.is_confirmed? %></td>
+    <td>
+      <%= link_to proj.name, "#", :class => "popover-trigger"  %>
+      <%= render partial: 'project_popover', locals: { proj: proj } %>
+    </td>
+    <td class="launch-pmtool"><%= link_to("go", proj.url_pmtool, :title => "Bug tracker: #{proj.url_pmtool}", :class => proj.pmtool_type) if proj.url_pmtool.present? %></td>
+    <td class="launch-demo"><%= link_to("go", proj.url_demo, :title => "Demo: #{proj.url_demo}") if proj.url_demo.present? %></td>
+    <td><%= proj.project_manager %></td>
+    <td<%= " class='#{td_css.join(' ')}'".html_safe unless td_css.empty? %>><%= proj.date_delivered.to_s(:xshort) %></td>
+    <td<%= " class='#{td_css.join(' ')}'".html_safe unless td_css.empty? %>><%= proj.date_target.to_s(:xshort) %></td>
+    <td class="muted"><%= proj.date_kickoff.to_s(:xshort) %></td>
+    <td><%= proj.hours_used.to_i %></td>
+    <td<%= " class='text-error'".html_safe + " title='Over-budget (out of #{proj.hours_budget.to_i})'".html_safe if (proj.hours_used.to_i || 0) > (proj.hours_budget.to_i || 0) %>><%= ((proj.hours_budget.to_i || 0) - (proj.hours_used.to_i || 0)) %></td>
+  </tr>
+  <% end %>
+<% else %>
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="10" class="muted">No projects!</td>
+  </tr>
+<% end %>
+</tbody>
+</table>

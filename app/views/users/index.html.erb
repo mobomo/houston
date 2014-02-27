@@ -1,0 +1,53 @@
+<h1>Users</h1>
+
+
+<%= form_tag users_path, method: :get, :html => { :class => 'form-horizontal' }  do %>
+    <div class="control-group">
+      <%= text_field_tag :query, params[:query] %>
+      <%= submit_tag "Search", name: nil, :class => 'btn btn-primary' %>
+    </div>
+<% end %>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Group</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.group.try(:name) %></td>
+        <td><%= user.name %></td>
+
+        <% if can? :update, user %>
+        <td><%= best_in_place user, :email, :type => :input, :nil => "Click to add" %></td>
+        <% else %>
+        <td><%= user.email %></td>
+        <% end %>
+
+        <td>
+          <% if can? :show, user %>
+          <%= link_to 'Show', user_path(user), :class => 'btn btn-mini' %>
+          <% end %>
+
+          <% if can? :update, user %>
+          <%= link_to 'Edit', edit_user_path(user), :class => 'btn btn-mini' %>
+          <% end %>
+
+          <% if can? :destroy, user %>
+          <%= link_to 'Destroy', user_path(user), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if can? :create, User %>
+<%= link_to 'New', new_user_path, :class => 'btn btn-primary' %>
+<% end %>

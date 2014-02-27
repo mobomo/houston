@@ -1,0 +1,36 @@
+<h1>Group</h1>
+<br />
+<p>
+  <h4>Name</h4>
+  <%= @group.name %>
+</p>
+<p>
+  <h4>CC</h4>
+  <%= @group.cc %>
+</p>
+<p>
+  <h4>From</h4>
+  <%= @group.from %>
+</p>
+<p>
+  <h4>Message</h4>
+  <%= @group.message %>
+</p>
+<p>
+  <h4>Ending Content</h4>
+  <%= @group.ending_content %>
+</p>
+
+<div class="form-actions">
+  <% if can? :index, Group %>
+  <%= link_to 'Back', groups_path, :class => 'btn'  %>
+  <% end %>
+
+  <% if can? :update, @group %>
+  <%= link_to 'Edit', edit_group_path(@group), :class => 'btn' %>
+  <% end %>
+
+  <% if can? :destroy, @group %>
+  <%= link_to 'Delete', group_path(@group), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+  <% end %>
+</div>

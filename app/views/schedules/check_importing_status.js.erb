@@ -1,0 +1,4 @@
+<% if @importing_stop -%>
+  window.clearInterval(intImporter);
+  window.location = '/schedules/load_from_google';
+<% end -%>

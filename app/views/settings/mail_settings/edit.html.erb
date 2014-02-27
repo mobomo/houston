@@ -1,0 +1,46 @@
+<%= link_to "<< Back to Settings", settings_path %>
+
+<div class="well">
+  <%= form_tag settings_update_mail_settings_path, method: :put do %>
+    <div class="control-group">
+      <%= label_tag 'from', 'From address', :class => 'control-label' %>
+      <div class="controls">
+        <%= text_field_tag 'from', Configuration::Mailer.from %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= label_tag 'scheduler_email', 'Scheduler email', :class => 'control-label' %>
+      <div class="controls">
+        <%= text_field_tag 'scheduler_email', Configuration::Mailer.scheduler_email %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= label_tag 'host', 'SMTP host', :class => 'control-label' %>
+      <div class="controls">
+        <%= text_field_tag 'host', Configuration::Mailer.host %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= label_tag 'port', 'SMTP port', :class => 'control-label' %>
+      <div class="controls">
+        <%= text_field_tag 'port', Configuration::Mailer.port %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= label_tag 'user_name', 'SMTP username', :class => 'control-label' %>
+      <div class="controls">
+        <%= text_field_tag 'user_name', Configuration::Mailer.user_name %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= label_tag 'password', 'SMTP password', :class => 'control-label' %>
+      <div class="controls">
+        <%= text_field_tag 'password', Configuration::Mailer.password %>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= submit_tag "Save", :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', settings_edit_mail_settings_path, :class => 'btn' %>
+    </div>
+  <% end %>
+</div>

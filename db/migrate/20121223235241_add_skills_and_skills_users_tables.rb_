@@ -1,0 +1,17 @@
+class AddSkillsAndSkillsUsersTables < ActiveRecord::Migration
+  def up
+    create_table :skills do |t|
+      t.string :name
+      t.timestamps
+    end
+    create_table :skills_users do |t|
+      t.references :user
+      t.references :skill
+      t.integer :level
+      t.float   :years
+    end
+  end
+
+  def down
+  end
+end

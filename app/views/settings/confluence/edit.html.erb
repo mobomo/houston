@@ -1,0 +1,50 @@
+<%= link_to "<< Back to Settings", settings_path %>
+<div class="well">
+  <%= form_for :confluence, url: settings_update_confluence_path, method: :put do |f| %>
+    <div class="control-group">
+      <%= f.label 'Url', 'Confluence WSDL Url', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field 'url', value: @settings[:url] %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label 'User Name', 'Confluence User Name', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field 'user', value: @settings[:user] %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label 'Password', 'Confluence Password', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.password_field 'password', value: @settings[:password] %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label 'Space Name', 'Confluence Space Name', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field 'space', value: @settings[:space] %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label 'Parent Page Id', 'Confluence Parent Page Id', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field 'faq_parent', value: @settings[:faq_parent] %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label 'Page Url', 'Confluence Page Url', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field 'faq_link', value: @settings[:faq_link] %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= submit_tag "Save", :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', settings_edit_confluence_path, :class => 'btn' %>
+    </div>
+  <% end %>
+</div>

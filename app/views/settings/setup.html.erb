@@ -44,7 +44,7 @@
 
   <div class='col-md-2'> </div>
 
-  <% if AppSettings.mode.nil? %>
+  <% if unset_mode? %>
   <div class='col-md-4'>
     <h2>Option 2: Click below to enter demo mode. The fastest way to have fun.</h2>
     <%= link_to 'Switch to Demo Mode', switch_mode_path(to: 'demo'), :class => 'btn btn-primary' %>

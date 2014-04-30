@@ -34,4 +34,8 @@ module ApplicationHelper
   def demo_mode?
     AppSettings.mode == 'demo'
   end
+
+  def unset_mode?
+    AppSettings.mode.nil?
+  end
 end

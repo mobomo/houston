@@ -3,6 +3,8 @@ class SettingsController < ApplicationController
   before_filter :setup_completed?, only: :setup
 
   def setup
+    redirect_to root_path if AppSettings.mode == 'demo'
+
     @config = DashboardConfig.new(params[:config_form])
 
     if request.post? && @config.save

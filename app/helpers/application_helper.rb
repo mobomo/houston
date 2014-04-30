@@ -30,4 +30,8 @@ module ApplicationHelper
   def feedback_configured?
     ::Configuration::Feedback.configured?
   end
+
+  def demo_mode?
+    AppSettings.mode == 'demo'
+  end
 end

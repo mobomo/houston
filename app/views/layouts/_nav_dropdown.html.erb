@@ -41,5 +41,7 @@
   <li><%= link_to "Settings", settings_path  %></li>
   <% end %>
 
-  <li><%= link_to 'Logout', signout_path %></li>
+  <% unless demo_mode? %>
+    <li><%= link_to 'Logout', signout_path %></li>
+  <% end %>
 </ul>

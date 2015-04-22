@@ -1,3 +1,6 @@
+# This Project is no longer Maintained
+As of April 22nd, 2015, Intridea no longer maintains this project.
+
 # Welcome to Houston
 Houston is a central hub for all things _your company,_ from upcoming projects to who's here:
 
